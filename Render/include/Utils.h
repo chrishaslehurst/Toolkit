@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <string>
 
-namespace utilities {
+namespace kraken { namespace utilities {
+
 	std::string LoadFile(const char* path);
-}
+
+}}

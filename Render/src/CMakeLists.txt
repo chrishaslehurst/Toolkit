@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.2)
 project(Render)
 
 add_library(Render
-            Window.cpp ../include/Window.h
-            Utils.cpp ../include/Utils.h)
+            KWindow.cpp ../include/KWindow.h
+            Utils.cpp ../include/Utils.h
+            Renderables/KShape2D.cpp ../include/Renderables/KShape2D.h)
 
 #include our own headers
 target_include_directories(Render PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
