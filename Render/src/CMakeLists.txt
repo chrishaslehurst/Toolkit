@@ -8,7 +8,7 @@ add_library(Render
 #include our own headers
 target_include_directories(Render PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
-set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../Libs)
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../Libs)
 
 #include GLFW headers
 target_include_directories(Render PRIVATE ${LIB_DIR}/GLFW/include)
