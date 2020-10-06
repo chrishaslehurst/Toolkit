@@ -1,4 +1,4 @@
-#include "KWindow.h"
+#include "Window.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stdio.h>
@@ -10,9 +10,9 @@ void errorCallback(int32_t error, const char* description) {
     fprintf(stderr, "GLFW error %d: %s\n", error, description);
 }
 
-namespace kraken { namespace render {
+namespace render {
 
-    bool KWindow::Create(int32_t width, int32_t height)
+    bool SWindow::Create(int32_t width, int32_t height)
     {
         glfwInit();
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -44,7 +44,7 @@ namespace kraken { namespace render {
         return true;
     }
     
-    bool KWindow::Update()
+    bool SWindow::Update()
     {
         if (!glfwWindowShouldClose(glWindow)) 
         {
@@ -66,4 +66,4 @@ namespace kraken { namespace render {
 	{
         glViewport(0, 0, width, height);
 	}
-}}
+}

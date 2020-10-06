@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 
 add_library(Engine
-            KGame.cpp ../include/KGame.h
-            Components/K2DRenderableComponent.cpp ../include/Components/K2DRenderableComponent.h)
+            Game.cpp ../include/Game.h
+            Components/2DRenderableComponent.cpp ../include/Components/2DRenderableComponent.h)
 
 #include our own headers
 target_include_directories(Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)

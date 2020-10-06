@@ -1,12 +1,12 @@
-#include "Renderables/KShape2D.h"
+#include "Renderables/Shape2D.h"
 #include "glad/glad.h"
 #include <string>
 #include "Utils.h"
 #include <iostream>
 
-namespace kraken { namespace render {
+namespace render {
 
-	void KShape2D::Setup()
+	void SShape2D::Setup()
 	{
 		// #todo-2020/01/27:  factor out loading shaders at LEAST into functions..
 			//compile vertex shader
@@ -85,20 +85,20 @@ namespace kraken { namespace render {
 		SetVAOHandle(VAO);
 	}
 
-	void KShape2D::SetShaderHandle(uint32_t inShaderHandle)
+	void SShape2D::SetShaderHandle(uint32_t inShaderHandle)
 	{
 		shaderHandle = inShaderHandle;
 	}
 
-	void KShape2D::SetVAOHandle(uint32_t inVAOHandle)
+	void SShape2D::SetVAOHandle(uint32_t inVAOHandle)
 	{
 		vaoHandle = inVAOHandle;
 	}
 
-	void KShape2D::Draw()
+	void SShape2D::Draw()
 	{
 		glUseProgram(shaderHandle);
 		glBindVertexArray(vaoHandle);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 	}
-}}
+}

@@ -1,9 +1,9 @@
 #pragma once
 #include <stdint.h>
 
-namespace kraken { namespace render {
+namespace render {
 
-	class KShape2D
+	class SShape2D
 	{
 	public:
 		void Setup();
@@ -17,4 +17,4 @@ namespace kraken { namespace render {
 		uint32_t shaderHandle;
 		uint32_t vaoHandle;
 	};
-}}
+}

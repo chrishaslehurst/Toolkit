@@ -1,6 +1,6 @@
 #include "Utils.h"
 #include <fstream>
-namespace kraken { namespace utilities {
+namespace utilities {
 
 	std::string LoadFile(const char* path)
 	{
@@ -20,4 +20,4 @@ namespace kraken { namespace utilities {
 			return { "FAILED TO OPEN FILE!" };
 		}
 	}
-}} //kraken::utilities
+} //utilities

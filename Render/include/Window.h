@@ -1,13 +1,13 @@
 #pragma once
 #include <stdint.h>
-#include "Renderables/KShape2D.h"
+#include "Renderables/Shape2D.h"
 
 struct GLFWwindow;
 
-namespace kraken { namespace render
+namespace render
 {
 	
-	class KWindow
+	class SWindow
 	{
 	public:
 
@@ -21,4 +21,4 @@ namespace kraken { namespace render
 
 	void FrameBufferSizeCallback(GLFWwindow* window, int32_t width, int32_t height);
 
-}}
+}
