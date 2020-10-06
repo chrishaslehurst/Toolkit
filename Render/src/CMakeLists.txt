@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.2)
-project(Render)
 
 add_library(Render
             KWindow.cpp ../include/KWindow.h

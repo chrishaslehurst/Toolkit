@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.2)
-project(Engine)
 
 add_library(Engine
             KGame.cpp ../include/KGame.h
