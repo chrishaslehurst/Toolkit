@@ -1,13 +1,12 @@
 #include "Game.h"
 #include "Window.h"
 #include <iostream>
-#include <GLFW/glfw3.h>
 
 	
 SGame::SGame()
 {
-	window = std::make_unique<render::SWindow>();
-	window->Create(800, 600);
+	// #todo-2020/10/06: replace this with an abstract factory? want render mode set once somewhere and thats IT (GL/DX/Vulkan)
+	window = render::CreateWindow(800, 600);
 }
 
 SGame::~SGame()
@@ -17,7 +16,6 @@ SGame::~SGame()
 
 bool SGame::Update()
 {
-
 	if (window->Update())
 	{
 		HandleInput();
@@ -28,8 +26,9 @@ bool SGame::Update()
 
 void SGame::HandleInput()
 {
-	if (glfwGetKey(window->GetGLWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	{
-		glfwSetWindowShouldClose(window->GetGLWindow(), true);
-	}
+	// #todo-2020/10/06: refactor input management..
+// 	if (glfwGetKey(window->GetGLWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+// 	{
+// 		glfwSetWindowShouldClose(window->GetGLWindow(), true);
+// 	}
 }

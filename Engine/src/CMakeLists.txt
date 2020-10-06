@@ -17,5 +17,5 @@ add_subdirectory( ${MODULES_DIR}/Render/src ${CMAKE_CURRENT_BINARY_DIR}/Render )
 target_link_libraries(Engine PRIVATE Render)
 
 #include GLFW headers for input handling
-target_include_directories(Engine PRIVATE ${LIB_DIR}/GLFW/include)
-target_link_libraries(Engine PRIVATE glfw)
+#target_include_directories(Engine PRIVATE ${LIB_DIR}/GLFW/include)
+#target_link_libraries(Engine PRIVATE glfw)

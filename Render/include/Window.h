@@ -1,24 +1,23 @@
 #pragma once
 #include <stdint.h>
-#include "Renderables/Shape2D.h"
-
-struct GLFWwindow;
+#include <memory>
 
 namespace render
 {
-	
+	enum class RenderBackend : uint8_t
+	{
+		OpenGL,
+		Vulkan,
+		DirectX11,
+		Max
+	};
+
 	class SWindow
 	{
 	public:
+		virtual bool Create(uint32_t width, uint32_t height) = 0;
+		virtual bool Update() = 0;
+	};	
 
-		bool Create(int32_t width, int32_t height);
-		bool Update();
-
-		GLFWwindow* GetGLWindow() const {return glWindow;};
-	private:
-		GLFWwindow* glWindow;
-	};
-
-	void FrameBufferSizeCallback(GLFWwindow* window, int32_t width, int32_t height);
-
+	std::unique_ptr<SWindow> CreateWindow(uint32_t width, uint32_t height);
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 add_library(Render
-            Window.cpp ../include/Window.h
+            WindowGL.cpp WindowGL.h Window.cpp ../include/Window.h 
             Utils.cpp ../include/Utils.h
             Renderables/Shape2D.cpp ../include/Renderables/Shape2D.h)
 
@@ -16,6 +16,7 @@ target_include_directories(Render PRIVATE ${LIB_DIR}/GLFW/include)
 add_subdirectory( ${LIB_DIR}/GLFW ${CMAKE_CURRENT_BINARY_DIR}/glfw )
 target_link_libraries(Render PRIVATE glfw)
 
+#include GLAD headers
 add_library(GLAD ${LIB_DIR}/GLAD/src/glad.c)
 target_include_directories(GLAD PRIVATE ${LIB_DIR}/GLAD/include)
 target_include_directories(Render PRIVATE ${LIB_DIR}/GLAD/include)
