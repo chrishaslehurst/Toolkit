@@ -3,12 +3,11 @@
 
 S2DRenderableComponent::S2DRenderableComponent()
 {
-		Renderable = std::make_unique<render::SShape2D>();
+	Renderable = std::make_unique<render::SShape2D>();
 }
 
 S2DRenderableComponent::~S2DRenderableComponent()
 {
-
 }
 
 void S2DRenderableComponent::SetShape()
@@ -20,5 +19,3 @@ void S2DRenderableComponent::Draw()
 {
 	Renderable->Draw();
 }
-
-

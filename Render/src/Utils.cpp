@@ -1,8 +1,9 @@
 #include "Utils.h"
 #include <fstream>
-namespace utilities {
+namespace utilities
+{
 
-	std::string LoadFile(const char* path)
+	std::string LoadFile(const char *path)
 	{
 		std::ifstream ifs(path);
 		if (ifs.is_open())
@@ -13,11 +14,11 @@ namespace utilities {
 			ifs.seekg(0, std::ios::beg);
 			ifs.read(&contents[0], contents.size());
 			ifs.close();
-			return(contents);
+			return (contents);
 		}
 		else
 		{
-			return { "FAILED TO OPEN FILE!" };
+			return {"FAILED TO OPEN FILE!"};
 		}
 	}
-} //utilities
+} // namespace utilities

@@ -1,24 +1,26 @@
 #include "WindowGL.h"
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <stdio.h>
-#include <iostream>
 #include "Utils.h"
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <iostream>
+#include <stdio.h>
 
+namespace render
+{
+    namespace gl
+    {
 
-namespace render {
-    namespace gl {
+        void errorCallback(int32_t error, const char *description)
+        {
+            fprintf(stderr, "GLFW error %d: %s\n", error, description);
+        }
 
-		void errorCallback(int32_t error, const char* description) {
-			fprintf(stderr, "GLFW error %d: %s\n", error, description);
-		}
-
-		SWindowGL::SWindowGL(uint32_t width, uint32_t height)
-		{
+        SWindowGL::SWindowGL(uint32_t width, uint32_t height)
+        {
             Create(width, height);
-		}
+        }
 
-		bool SWindowGL::Create(uint32_t width, uint32_t height)
+        bool SWindowGL::Create(uint32_t width, uint32_t height)
         {
             glfwInit();
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -28,7 +30,8 @@ namespace render {
             glfwSetErrorCallback(render::gl::errorCallback);
 
             glWindow = glfwCreateWindow(width, height, "UnnamedEngineWindow", nullptr, nullptr);
-            if (!glWindow) {
+            if (!glWindow)
+            {
                 std::cout << "Failed to create GLFW window" << std::endl;
                 glfwTerminate();
                 return false;
@@ -68,9 +71,9 @@ namespace render {
             }
         }
 
-        void FrameBufferSizeCallback(GLFWwindow* window, int32_t width, int32_t height)
+        void FrameBufferSizeCallback(GLFWwindow *window, int32_t width, int32_t height)
         {
             glViewport(0, 0, width, height);
         }
-    }
-}
+    } // namespace gl
+} // namespace render

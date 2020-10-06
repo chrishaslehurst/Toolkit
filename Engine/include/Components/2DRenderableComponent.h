@@ -1,13 +1,12 @@
 #pragma once
 #include <memory>
 
-
 namespace render
 {
 	class SShape2D;
 }
 
-class S2DRenderableComponent 
+class S2DRenderableComponent
 {
 public:
 	S2DRenderableComponent();
@@ -15,6 +14,7 @@ public:
 
 	void SetShape();
 	void Draw();
+
 private:
 	std::unique_ptr<render::SShape2D> Renderable;
 };
