@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 
 add_library(Engine
             Game.cpp ../include/Game.h
+            Input.cpp ../include/Input.h
             Components/2DRenderableComponent.cpp ../include/Components/2DRenderableComponent.h)
 
 #include our own headers

@@ -9,11 +9,16 @@ namespace render
 {
     namespace gl
     {
-
         void errorCallback(int32_t error, const char *description)
         {
             fprintf(stderr, "GLFW error %d: %s\n", error, description);
         }
+
+        void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+        {
+          //  if (key == GLFW_KEY_E && action == GLFW_PRESS)
+        }
+
 
         SWindowGL::SWindowGL(uint32_t width, uint32_t height)
         {
@@ -48,6 +53,7 @@ namespace render
             glViewport(0, 0, width, height);
             glClearColor(0.15f, 0.6f, 0.4f, 1.0f);
 
+            glfwSetKeyCallback(glWindow, render::gl::KeyCallback);
             glfwSetFramebufferSizeCallback(glWindow, render::gl::FrameBufferSizeCallback);
 
             return true;

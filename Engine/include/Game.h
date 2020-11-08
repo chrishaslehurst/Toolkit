@@ -6,6 +6,7 @@ namespace render
 {
 	class SWindow;
 }
+class SInput;
 
 class SGame
 {
@@ -19,4 +20,5 @@ public:
 
 private:
 	std::unique_ptr<render::SWindow> window;
+	std::unique_ptr<SInput> input;
 };
