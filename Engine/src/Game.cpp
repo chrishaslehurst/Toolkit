@@ -28,9 +28,5 @@ bool SGame::Update()
 
 void SGame::HandleInput()
 {
-	// #todo-2020/10/06: refactor input management..
-	// 	if (glfwGetKey(window->GetGLWindow(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-	// 	{
-	// 		glfwSetWindowShouldClose(window->GetGLWindow(), true);
-	// 	}
+	
 }

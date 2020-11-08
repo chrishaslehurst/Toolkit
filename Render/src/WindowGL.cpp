@@ -1,6 +1,7 @@
 #include "WindowGL.h"
 #include "Utils.h"
 #include <glad/glad.h>
+
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <stdio.h>
@@ -14,11 +15,13 @@ namespace render
             fprintf(stderr, "GLFW error %d: %s\n", error, description);
         }
 
-        void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
-        {
-          //  if (key == GLFW_KEY_E && action == GLFW_PRESS)
-        }
-
+		void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+		{
+			if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	        {
+	        	glfwSetWindowShouldClose(window, true);
+	        }
+		}
 
         SWindowGL::SWindowGL(uint32_t width, uint32_t height)
         {
@@ -32,7 +35,7 @@ namespace render
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-            glfwSetErrorCallback(render::gl::errorCallback);
+            glfwSetErrorCallback(errorCallback);
 
             glWindow = glfwCreateWindow(width, height, "UnnamedEngineWindow", nullptr, nullptr);
             if (!glWindow)
@@ -42,6 +45,7 @@ namespace render
                 return false;
             }
 
+            glfwSetKeyCallback(glWindow, keyCallback);
             glfwMakeContextCurrent(glWindow);
 
             if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
