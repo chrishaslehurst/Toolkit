@@ -1,21 +1,21 @@
 #include "Components/2DRenderableComponent.h"
 #include <Renderables/Shape2D.h>
 
-S2DRenderableComponent::S2DRenderableComponent()
+Renderable2DComponent::Renderable2DComponent()
 {
-	Renderable = std::make_unique<render::SShape2D>();
+	Renderable = std::make_unique<render::Shape2D>();
 }
 
-S2DRenderableComponent::~S2DRenderableComponent()
+Renderable2DComponent::~Renderable2DComponent()
 {
 }
 
-void S2DRenderableComponent::SetShape()
+void Renderable2DComponent::SetShape()
 {
 	Renderable->Setup();
 }
 
-void S2DRenderableComponent::Draw()
+void Renderable2DComponent::Draw()
 {
 	Renderable->Draw();
 }

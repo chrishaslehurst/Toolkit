@@ -1,17 +1,24 @@
 #pragma once
 #include <stdint.h>
 #include <memory>
+#include "CoreMinimal.h"
 
 namespace render {
-enum class RenderBackend : uint8_t { OpenGL, Vulkan, DirectX11, Max };
 
-class SWindow {
- public:
-  virtual ~SWindow(){};
+	enum class ERenderingAPI : u8
+	{
+		OpenGL,
+		Vulkan,
+		DirectX11
+	};
 
-  virtual bool Create(uint32_t width, uint32_t height) = 0;
-  virtual bool Update() = 0;
-};
+	class Window {
+	public:
+		virtual ~Window() {};
 
-std::unique_ptr<SWindow> CreateWindow(uint32_t width, uint32_t height);
+		virtual bool Create(u32 width, u32 height) = 0;
+		virtual bool Update() = 0;
+	};
+
+	std::unique_ptr<Window> CreateWindow(u32 width, u32 height, ERenderingAPI platform);
 }  // namespace render

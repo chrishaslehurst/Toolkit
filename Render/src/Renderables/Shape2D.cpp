@@ -6,14 +6,14 @@
 
 namespace render {
 
-	void SShape2D::Setup()
+	void Shape2D::Setup()
 	{
 		// #todo-2020/01/27:  factor out loading shaders at LEAST into functions..
 			//compile vertex shader
-		uint32_t vertexShader;
+		u32 vertexShader;
 		vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
-		std::string vertexShaderSource = utilities::LoadFile("../content/shaders/vertex.glsl").data();
+		std::string vertexShaderSource = Utilities::LoadFile("../content/shaders/vertex.glsl").data();
 		const char* vertShaderPtr = vertexShaderSource.c_str();
 		glShaderSource(vertexShader, 1, &vertShaderPtr, NULL);
 		glCompileShader(vertexShader);
@@ -28,10 +28,10 @@ namespace render {
 		}
 
 		//compile fragment shader
-		uint32_t fragShader;
+		u32 fragShader;
 		fragShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-		std::string fragShaderSource = utilities::LoadFile("../content/shaders/fragment.glsl").data();
+		std::string fragShaderSource = Utilities::LoadFile("../content/shaders/fragment.glsl").data();
 		const char* fragShaderPtr = fragShaderSource.c_str();
 		glShaderSource(fragShader, 1, &fragShaderPtr, NULL);
 		glCompileShader(fragShader);
@@ -43,7 +43,7 @@ namespace render {
 			std::cout << "Error: Fragment Shader Compilation Failed: \n" << infoLog << std::endl;
 		}
 
-		uint32_t shaderProgram;
+		u32 shaderProgram;
 		shaderProgram = glCreateProgram();
 
 		glAttachShader(shaderProgram, vertexShader);
@@ -62,11 +62,11 @@ namespace render {
 		SetShaderHandle(shaderProgram);
 
 		//Vertex Buffers
-		uint32_t VAO;
+		u32 VAO;
 		glGenVertexArrays(1, &VAO);
 		glBindVertexArray(VAO);
 
-		uint32_t VBO;
+		u32 VBO;
 		glGenBuffers(1, &VBO);
 
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -80,22 +80,22 @@ namespace render {
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(f32), (void*)0);
 		glEnableVertexAttribArray(0);
 		SetVAOHandle(VAO);
 	}
 
-	void SShape2D::SetShaderHandle(uint32_t inShaderHandle)
+	void Shape2D::SetShaderHandle(u32 inShaderHandle)
 	{
 		shaderHandle = inShaderHandle;
 	}
 
-	void SShape2D::SetVAOHandle(uint32_t inVAOHandle)
+	void Shape2D::SetVAOHandle(u32 inVAOHandle)
 	{
 		vaoHandle = inVAOHandle;
 	}
 
-	void SShape2D::Draw()
+	void Shape2D::Draw()
 	{
 		glUseProgram(shaderHandle);
 		glBindVertexArray(vaoHandle);

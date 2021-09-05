@@ -4,16 +4,15 @@
 
 namespace render
 {
-    std::unique_ptr<SWindow> CreateWindow(uint32_t width, uint32_t height)
+    std::unique_ptr<Window> CreateWindow(u32 width, u32 height, ERenderingAPI backend)
     {
-        RenderBackend backend = RenderBackend::OpenGL;
         switch (backend)
         {
-        case RenderBackend::OpenGL:
-            return std::make_unique<render::gl::SWindowGL>(width, height);
-        case RenderBackend::DirectX11:
-        case RenderBackend::Vulkan:
-        case RenderBackend::Max:
+        case ERenderingAPI::OpenGL:
+            return std::make_unique<render::gl::WindowGL>(width, height);
+        case ERenderingAPI::DirectX11:
+        case ERenderingAPI::Vulkan:
+        default:
             assert(false);
             return nullptr;
         }

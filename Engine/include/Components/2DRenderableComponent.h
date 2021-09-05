@@ -3,18 +3,18 @@
 
 namespace render
 {
-	class SShape2D;
+	class Shape2D;
 }
 
-class S2DRenderableComponent
+class Renderable2DComponent
 {
 public:
-	S2DRenderableComponent();
-	~S2DRenderableComponent();
+	Renderable2DComponent();
+	~Renderable2DComponent();
 
 	void SetShape();
 	void Draw();
 
 private:
-	std::unique_ptr<render::SShape2D> Renderable;
+	std::unique_ptr<render::Shape2D> Renderable;
 };

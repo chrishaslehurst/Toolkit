@@ -2,23 +2,24 @@
 
 #include <memory>
 
-namespace render
-{
-	class SWindow;
+namespace render {
+	enum class ERenderingAPI : uint8_t;
+	class Window;
 }
-class SInput;
+class Input;
 
-class SGame
+class Game
 {
 
 public:
-	SGame();
-	~SGame();
+	Game();
+	~Game();
 
 	bool Update();
 	void HandleInput();
 
 private:
-	std::unique_ptr<render::SWindow> window;
-	std::unique_ptr<SInput> input;
+	std::unique_ptr<render::Window> window;
+	std::unique_ptr<Input> input;
+	render::ERenderingAPI api;
 };

@@ -1,20 +1,20 @@
 #pragma once
-#include <stdint.h>
+#include "CoreMinimal.h"
 
 namespace render {
 
-	class SShape2D
+	class Shape2D
 	{
 	public:
 		void Setup();
 
-		void SetShaderHandle(uint32_t inShaderHandle);
-		void SetVAOHandle(uint32_t inVAOHandle);
+		void SetShaderHandle(u32 inShaderHandle);
+		void SetVAOHandle(u32 inVAOHandle);
 		void Draw();
 
 	private:
 
-		uint32_t shaderHandle;
-		uint32_t vaoHandle;
+		u32 shaderHandle;
+		u32 vaoHandle;
 	};
 }

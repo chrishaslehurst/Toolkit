@@ -1,6 +1,6 @@
 #include "Utils.h"
 #include <fstream>
-namespace utilities
+namespace Utilities
 {
 
 	std::string LoadFile(const char *path)

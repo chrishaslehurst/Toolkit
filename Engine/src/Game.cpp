@@ -3,30 +3,30 @@
 #include "Input.h"
 #include <iostream>
 
-SGame::SGame()
+Game::Game()
 {
-	// #todo-2020/10/06: replace this with an abstract factory? want render mode set once somewhere and thats IT (GL/DX/Vulkan)
-	window = render::CreateWindow(800, 600);
-	//and factor the creation of this into similar functionality - set gl once, have that decide what to create.
-	input = std::make_unique<SInputGL>();
+	api = render::ERenderingAPI::OpenGL;
+	window = render::CreateWindow(800, 600, api);
+	input = std::make_unique<InputGL>();
 	//todo: subscribe the callback to the window from the input here...
 }
 
-SGame::~SGame()
+Game::~Game()
 {
 }
 
-bool SGame::Update()
+bool Game::Update()
 {
 	if (window->Update())
 	{
+		input->ReceiveInput(0, 0, 0);
 		HandleInput();
 		return true;
 	}
 	return false;
 }
 
-void SGame::HandleInput()
+void Game::HandleInput()
 {
 	
 }

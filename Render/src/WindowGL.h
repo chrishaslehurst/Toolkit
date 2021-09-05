@@ -1,22 +1,23 @@
 #include "Window.h"
+#include "CoreMinimal.h"
 
 struct GLFWwindow;
 namespace render
 {
 	namespace gl
 	{
-		class SWindowGL : public SWindow
+		class WindowGL : public Window
 		{
 		public:
-			SWindowGL(uint32_t width, uint32_t height);
+			WindowGL(u32 width, u32 height);
 
-			bool Create(uint32_t width, uint32_t height) override;
+			bool Create(u32 width, u32 height) override;
 			bool Update() override;
 
 		private:
 			GLFWwindow *glWindow;
 		};
 
-		void FrameBufferSizeCallback(GLFWwindow *window, int32_t width, int32_t height);
+		void FrameBufferSizeCallback(GLFWwindow *window, s32 width, s32 height);
 	} // namespace gl
 } // namespace render

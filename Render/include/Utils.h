@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace utilities {
+namespace Utilities {
 
 	std::string LoadFile(const char* path);
 

@@ -10,6 +10,11 @@ target_include_directories(Render PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
 set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../Libs)
 
+#include Core module headers
+target_include_directories(Render PUBLIC ${MODULES_DIR}/Core/include)
+#add the core module project subdirectory as a PUBLIC dependency
+target_link_libraries(Render PUBLIC Core)
+
 #include GLFW headers
 target_include_directories(Render PRIVATE ${LIB_DIR}/GLFW/include)
 #add the glfw project subdirectory as a private dependency

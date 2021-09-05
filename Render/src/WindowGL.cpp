@@ -10,7 +10,7 @@ namespace render
 {
     namespace gl
     {
-        void errorCallback(int32_t error, const char *description)
+        void errorCallback(s32 error, const char *description)
         {
             fprintf(stderr, "GLFW error %d: %s\n", error, description);
         }
@@ -23,12 +23,12 @@ namespace render
 	        }
 		}
 
-        SWindowGL::SWindowGL(uint32_t width, uint32_t height)
+        WindowGL::WindowGL(u32 width, u32 height)
         {
             Create(width, height);
         }
 
-        bool SWindowGL::Create(uint32_t width, uint32_t height)
+        bool WindowGL::Create(u32 width, u32 height)
         {
             glfwInit();
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -45,7 +45,6 @@ namespace render
                 return false;
             }
 
-            glfwSetKeyCallback(glWindow, keyCallback);
             glfwMakeContextCurrent(glWindow);
 
             if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -57,13 +56,13 @@ namespace render
             glViewport(0, 0, width, height);
             glClearColor(0.15f, 0.6f, 0.4f, 1.0f);
 
-            glfwSetKeyCallback(glWindow, render::gl::KeyCallback);
+            glfwSetKeyCallback(glWindow, render::gl::keyCallback);
             glfwSetFramebufferSizeCallback(glWindow, render::gl::FrameBufferSizeCallback);
 
             return true;
         }
 
-        bool SWindowGL::Update()
+        bool WindowGL::Update()
         {
             if (!glfwWindowShouldClose(glWindow))
             {
@@ -81,7 +80,7 @@ namespace render
             }
         }
 
-        void FrameBufferSizeCallback(GLFWwindow *window, int32_t width, int32_t height)
+        void FrameBufferSizeCallback(GLFWwindow *window, u32 width, u32 height)
         {
             glViewport(0, 0, width, height);
         }
