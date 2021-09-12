@@ -26,3 +26,5 @@ add_library(GLAD ${LIB_DIR}/GLAD/src/glad.c)
 target_include_directories(GLAD PRIVATE ${LIB_DIR}/GLAD/include)
 target_include_directories(Render PRIVATE ${LIB_DIR}/GLAD/include)
 target_link_libraries(Render PRIVATE GLAD)
+
+set_target_properties(GLAD PROPERTIES FOLDER "Third Party")

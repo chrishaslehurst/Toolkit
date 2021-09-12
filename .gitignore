@@ -33,4 +33,6 @@
 
 Engine/build/*
 Render/build/*
+Sandbox/build/*
+Core/build/*
 .vscode/*
