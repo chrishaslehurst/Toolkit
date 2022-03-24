@@ -2,8 +2,11 @@
 #include <stdint.h>
 #include <string>
 
-namespace Utilities {
+namespace toolkit
+{
+	namespace utilities {
 
-	std::string LoadFile(const char* path);
+		std::string LoadFile(const char* path);
 
+	}
 }

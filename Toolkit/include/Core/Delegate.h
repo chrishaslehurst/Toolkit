@@ -37,7 +37,7 @@ public:
 		return d;
 	}
 
-	void Invoke(Args&&... args)
+	void Invoke(Args&&... args) const
 	{
 		return (*Function)(Object, std::forward<Args>(args)...);
 	}

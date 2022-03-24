@@ -36,3 +36,5 @@ Render/build/*
 Sandbox/build/*
 Core/build/*
 .vscode/*
+
+ThirdParty/*

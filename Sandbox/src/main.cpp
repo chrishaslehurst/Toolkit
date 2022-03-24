@@ -1,24 +1,11 @@
 #include <stdio.h>
-#include "Components/2DRenderableComponent.h"
-#include "Game.h"
+#include "System.h"
 
 int main() {
-  bool Running = true;
 
-
-  Game game;
-  // #ktodo-2020/02/16: need to acquire a ptr to this via the game object so
-  // game can deal with updating/drawing
-  Renderable2DComponent Tri;
-
-  Tri.SetShape();
-
-  while (Running) {
-    Running = game.Update();
-
-    // Do all the things.
-    Tri.Draw();
-  }
+  toolkit::System system;
+  system.AddScene(800, 600, "Sandbox");
+  system.Run();
 
   return 0;
 }
