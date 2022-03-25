@@ -1,4 +1,5 @@
 #pragma once
+#include "TKTypeTraits.h"
 
 template<typename ...Args>
 class Delegate
@@ -7,19 +8,21 @@ class Delegate
 
 public:
 
-	template <class Obj, void (Obj::* TFunc)(Args...)>
+	template <auto Func, std::enable_if_t<std::is_member_function_pointer_v<decltype(Func)>, bool> = true>
 	static void MemberFuncStub(void* objectPtr, Args&&... args)
 	{
-		Obj* typedPtr = static_cast<Obj*>(objectPtr);
-		return (typedPtr->*TFunc)(std::forward<Args>(args)...);
+		using ObjType = decltype(function_pointer_class(Func));
+		ObjType* typedPtr = static_cast<ObjType*>(objectPtr);
+		return (typedPtr->*Func)(std::forward<Args>(args)...);
 	}
 
-	template <class Obj, void (Obj::* TFunc)(Args...)>
-	static DelegateSignature FromMemberFunction(Obj* objectPtr)
+	template <auto Func, std::enable_if_t<std::is_member_function_pointer_v<decltype(Func)>, bool> = true>
+	static DelegateSignature FromMemberFunction(decltype(function_pointer_class(Func))* objectPtr)
 	{
+		static_assert(is_same_signature_v<decltype(Func), void(decltype(function_pointer_class(Func))::*)(Args...)>, "Function signature does not match delegate");
 		DelegateSignature delegate;
 		delegate.Object = objectPtr;
-		delegate.Function = &MemberFuncStub<Obj, TFunc>;
+		delegate.Function = &MemberFuncStub<Func>;
 		return delegate;
 	}
 

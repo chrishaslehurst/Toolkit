@@ -27,10 +27,10 @@ namespace toolkit
 	{
 	public:
 
-		template <class Obj, void (Obj::* TFunc)()>
-		void BindKey(s32 key, s32 action, s32 mods, Obj* object)
+		template <auto Func, std::enable_if_t<std::is_member_function_pointer_v<decltype(Func)>, bool> = true>
+		void BindKey(s32 key, s32 action, s32 mods, decltype(function_pointer_class(Func))* object)
 		{
-			keyBinds.push_back(KeyBind(key, action, mods, Delegate<>::FromMemberFunction<Obj, (TFunc)>(object)));
+			keyBinds.push_back(KeyBind(key, action, mods, Delegate<>::FromMemberFunction<(Func)>(object)));
 		}
 
 		template <void(*TFunc)()>
