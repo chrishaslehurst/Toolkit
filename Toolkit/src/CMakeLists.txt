@@ -30,12 +30,12 @@ add_subdirectory( ${LIB_DIR}/GLFW ${CMAKE_CURRENT_BINARY_DIR}/glfw )
 set_target_properties(glfw PROPERTIES FOLDER "Third Party")
 
 #include GLAD headers
-add_library(GLAD ${LIB_DIR}/GLAD/src/glad.c)
-target_include_directories(GLAD PRIVATE ${LIB_DIR}/GLAD/include)
-target_include_directories(Toolkit PRIVATE ${LIB_DIR}/GLAD/include)
-target_link_libraries(Toolkit PRIVATE GLAD)
+add_subdirectory( ${LIB_DIR}/glad ${CMAKE_CURRENT_BINARY_DIR}/glad )
+target_include_directories(glad PRIVATE ${LIB_DIR}/glad/include)
+target_include_directories(Toolkit PRIVATE ${LIB_DIR}/glad/include)
+target_link_libraries(Toolkit PRIVATE glad)
 
-set_target_properties(GLAD PROPERTIES FOLDER "Third Party")
+set_target_properties(glad PROPERTIES FOLDER "Third Party")
 
 #include spdlog
 add_subdirectory( ${LIB_DIR}/spdlog ${CMAKE_CURRENT_BINARY_DIR}/spdlog )
