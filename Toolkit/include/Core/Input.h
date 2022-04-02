@@ -11,9 +11,9 @@ namespace toolkit
 	{
 		KeyBind(s32 inKey, s32 inAction, s32 inMods, Delegate<> inBinding)
 			:key(inKey)
-			,action(inAction)
-			,mods(inMods)
-			,binding(inBinding)
+			, action(inAction)
+			, mods(inMods)
+			, binding(inBinding)
 		{}
 
 		s32 key = 0;
@@ -38,7 +38,7 @@ namespace toolkit
 		{
 			keyBinds.push_back(KeyBind(key, action, mods, Delegate<>::FromFreeFunction<(TFunc)>()));
 		}
-		
+
 		void ReceiveInput(GLFWwindow* window, s32 key, s32 action, s32 mods);
 
 		void VoidTestCallback();

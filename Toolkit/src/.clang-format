@@ -1,0 +1,9 @@
+Language: Cpp
+UseTab: Never
+TabWidth: 4
+IndentWidth: 4
+ColumnLimit: 120
+BreakBeforeBraces: Allman
+CompactNamespaces: true
+NamespaceIndentation: All
+SortIncludes: true
