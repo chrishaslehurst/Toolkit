@@ -7,3 +7,4 @@ BreakBeforeBraces: Allman
 CompactNamespaces: true
 NamespaceIndentation: All
 SortIncludes: true
+AlignAfterOpenBracket: Align

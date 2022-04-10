@@ -18,6 +18,7 @@ target_include_directories(Toolkit PUBLIC    ${CMAKE_CURRENT_SOURCE_DIR}/../incl
 set(MODULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../)
 set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../ThirdParty)
 
+
 set_target_properties(Toolkit PROPERTIES FOLDER "Toolkit")
 target_compile_features(Toolkit PRIVATE cxx_std_17)
 
@@ -42,3 +43,12 @@ add_subdirectory( ${LIB_DIR}/spdlog ${CMAKE_CURRENT_BINARY_DIR}/spdlog )
 target_link_libraries(Toolkit PUBLIC spdlog)
 
 set_target_properties(spdlog PROPERTIES FOLDER "Third Party")
+
+#copy assets
+add_custom_target(copy_assets ALL
+                COMMAND ${CMAKE_COMMAND} -E copy_directory
+                ${CMAKE_CURRENT_SOURCE_DIR}/../content
+                ${PROJECT_BINARY_DIR}/content
+                COMMENT "Copying resources into binary directory")
+
+add_dependencies(Toolkit copy_assets)

@@ -8,9 +8,10 @@ namespace toolkit {
 	{
 		std::string LoadFile(const char* path)
 		{
-			std::ifstream ifs(path);
+			std::ifstream ifs(path);			
 			if (ifs.is_open())
 			{
+                TK_CORE_INFO("Successfully loaded file: {}", path);
 				std::string contents;
 				ifs.seekg(0, std::ios::end);
 				contents.resize(ifs.tellg());

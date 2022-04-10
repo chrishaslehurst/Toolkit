@@ -8,6 +8,7 @@ namespace toolkit
 
     System::System()
     {
+        toolkit::Log::Init();
         input = std::make_unique<toolkit::Input>();
         input->BindKey<&Input::VoidTestCallback>(GLFW_KEY_T, GLFW_PRESS, GLFW_MOD_SHIFT, input.get());
         input->BindKey<&UpPressed>(GLFW_KEY_UP, GLFW_PRESS, 0);
@@ -21,8 +22,6 @@ namespace toolkit
     void System::Run()
     {
         bool Running = true;
-
-        toolkit::Log::Init();
         TK_CORE_INFO("Log Begin");
 
         while (Running)

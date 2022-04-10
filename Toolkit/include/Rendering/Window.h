@@ -11,8 +11,6 @@ namespace toolkit {
 	
 	public:
 		Window(u32 width, u32 height, const char* windowName, void* system);
-
-		bool Create(u32 width, u32 height, const char* windowName, void* system);
 		bool Update();
 	private:
 		GLFWwindow* window = nullptr;
