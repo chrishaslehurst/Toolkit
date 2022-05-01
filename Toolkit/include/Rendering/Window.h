@@ -13,6 +13,10 @@ namespace toolkit {
 		Window(u32 width, u32 height, const char* windowName, void* system);
 		bool Update();
 	private:
+
+		u32 shaderProgram;
+		u32 vertexArrayObject;
+		u32 elementBufferObject;
 		GLFWwindow* window = nullptr;
 	};
 
