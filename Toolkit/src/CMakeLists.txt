@@ -52,3 +52,6 @@ add_custom_target(copy_assets ALL
                 COMMENT "Copying resources into binary directory")
 
 add_dependencies(Toolkit copy_assets)
+
+set_target_properties(copy_assets PROPERTIES FOLDER "Build Utilites")
+set_target_properties(glad-generate-files PROPERTIES FOLDER "Build Utilites")
