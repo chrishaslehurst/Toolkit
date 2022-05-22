@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 project(Sandbox VERSION 1.0.0 LANGUAGES C CXX)
 
+enable_testing()
+
 add_executable(Sandbox
   main.cpp
 )

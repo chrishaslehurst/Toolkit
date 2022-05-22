@@ -37,6 +37,7 @@ target_include_directories(Toolkit PRIVATE ${LIB_DIR}/glad/include)
 target_link_libraries(Toolkit PRIVATE glad)
 
 set_target_properties(glad PROPERTIES FOLDER "Third Party")
+set_target_properties(glad-generate-files PROPERTIES FOLDER "Build Utilites")
 
 #include spdlog
 add_subdirectory( ${LIB_DIR}/spdlog ${CMAKE_CURRENT_BINARY_DIR}/spdlog )
@@ -54,4 +55,19 @@ add_custom_target(copy_assets ALL
 add_dependencies(Toolkit copy_assets)
 
 set_target_properties(copy_assets PROPERTIES FOLDER "Build Utilites")
-set_target_properties(glad-generate-files PROPERTIES FOLDER "Build Utilites")
+
+#testing
+enable_testing()
+
+add_executable(ToolkitTests tests/DelegateTests.cpp)
+target_link_libraries(ToolkitTests PRIVATE Toolkit)
+add_subdirectory(${LIB_DIR}/Catch2 ${CMAKE_CURRENT_BINARY_DIR}/Catch2)
+target_link_libraries(ToolkitTests PRIVATE Catch2::Catch2WithMain)
+
+include(CTest)
+include(Catch)
+catch_discover_tests(ToolkitTests)
+
+set_target_properties(ToolkitTests PROPERTIES FOLDER "Testing")
+set_target_properties(Catch2 PROPERTIES FOLDER "Testing")
+set_target_properties(Catch2WithMain PROPERTIES FOLDER "Testing")
