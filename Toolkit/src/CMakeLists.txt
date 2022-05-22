@@ -23,11 +23,11 @@ set_target_properties(Toolkit PROPERTIES FOLDER "Toolkit")
 target_compile_features(Toolkit PRIVATE cxx_std_17)
 
 #include GLFW headers for input handling
-target_include_directories(Toolkit PRIVATE ${LIB_DIR}/GLFW/include)
+target_include_directories(Toolkit PRIVATE ${LIB_DIR}/glfw/include)
 target_link_libraries(Toolkit PRIVATE glfw)
 
 #add the glfw project subdirectory as a private dependency
-add_subdirectory( ${LIB_DIR}/GLFW ${CMAKE_CURRENT_BINARY_DIR}/glfw )
+add_subdirectory( ${LIB_DIR}/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw )
 set_target_properties(glfw PROPERTIES FOLDER "Third Party")
 
 #include GLAD headers
