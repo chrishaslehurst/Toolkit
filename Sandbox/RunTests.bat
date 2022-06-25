@@ -1,3 +1,4 @@
-cd build
-ctest 
+
+cmake --build ./build --config Debug
+ctest --test-dir ./build
 PAUSE

@@ -1,6 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Defines.h"
+
+#include "Mesh.h"
+#include "Material.h"
 
 struct GLFWwindow;
 
@@ -13,10 +15,9 @@ namespace toolkit {
 		Window(u32 width, u32 height, const char* windowName, void* system);
 		bool Update();
 	private:
-
-		u32 shaderProgram;
-		u32 vertexArrayObject;
-		u32 elementBufferObject;
+		
+		Mesh square;
+		Material mat;
 		GLFWwindow* window = nullptr;
 	};
 
