@@ -21,6 +21,27 @@ target_include_directories(Toolkit PUBLIC    ${CMAKE_CURRENT_SOURCE_DIR}/../incl
 set(MODULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../)
 set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../ThirdParty)
 
+add_library(imgui STATIC
+            ${LIB_DIR}/imgui/imgui.cpp
+            ${LIB_DIR}/imgui/imconfig.h
+            ${LIB_DIR}/imgui/imgui.h
+            ${LIB_DIR}/imgui/imgui_demo.cpp
+            ${LIB_DIR}/imgui/imgui_draw.cpp
+            ${LIB_DIR}/imgui/imgui_internal.h
+            ${LIB_DIR}/imgui/imgui_tables.cpp
+            ${LIB_DIR}/imgui/imgui_widgets.cpp
+            ${LIB_DIR}/imgui/imstb_rectpack.h
+            ${LIB_DIR}/imgui/imstb_textedit.h
+            ${LIB_DIR}/imgui/imstb_truetype.h
+            ${LIB_DIR}/imgui/backends/imgui_impl_glfw.cpp
+            ${LIB_DIR}/imgui/backends/imgui_impl_opengl3.cpp)
+            
+target_include_directories(imgui PRIVATE ${LIB_DIR}/imgui ${LIB_DIR}/imgui/backends ${LIB_DIR}/glfw/include)
+
+
+target_include_directories(Toolkit PUBLIC ${LIB_DIR}/imgui ${LIB_DIR}/imgui/backends)
+target_link_libraries(Toolkit PUBLIC imgui)
+
 set_target_properties(Toolkit PROPERTIES FOLDER "Toolkit")
 target_compile_features(Toolkit PRIVATE cxx_std_17)
 

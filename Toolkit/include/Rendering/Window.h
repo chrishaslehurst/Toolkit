@@ -19,6 +19,8 @@ namespace toolkit {
 		Mesh square;
 		Material mat;
 		GLFWwindow* window = nullptr;
+
+		bool showDemoWindow = true;
 	};
 
 	void FrameBufferSizeCallback(GLFWwindow* window, s32 width, s32 height);
