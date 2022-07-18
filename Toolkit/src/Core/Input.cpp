@@ -29,18 +29,5 @@ namespace toolkit
 // 		Callback3.Invoke(5, 6);
 	}
 
-	void Input::VoidTestCallback()
-	{
-		TK_CORE_INFO("Void Test");
-	}
-
-	void Input::TestCallback(s32 test, s32 test2)
-	{
-		TK_CORE_INFO("Member with Vars Test: {} {}", test, test2);
-	}
-
-	void FreeFuncCallbackTest(s32 test1, s32 test2)
-	{
-		TK_CORE_INFO("Free Function Test: {} {}", test1, test2);
-	}
+	
 }

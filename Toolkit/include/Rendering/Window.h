@@ -1,26 +1,20 @@
 #pragma once
 #include "CoreMinimal.h"
 
-#include "Mesh.h"
-#include "Material.h"
-
 struct GLFWwindow;
 
 namespace toolkit {
 
 	class Window 
 	{
-	
+		friend class Application;
 	public:
 		Window(u32 width, u32 height, const char* windowName, void* system);
+		void PreRenderUpdate();
 		bool Update();
 	private:
 		
-		Mesh square;
-		Material mat;
 		GLFWwindow* window = nullptr;
-
-		bool showDemoWindow = true;
 	};
 
 	void FrameBufferSizeCallback(GLFWwindow* window, s32 width, s32 height);

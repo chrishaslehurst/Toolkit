@@ -1,17 +1,18 @@
 cmake_minimum_required(VERSION 3.2)
 
 add_library(Toolkit STATIC
-            Core/System.cpp ../include/Core/System.h
+            Core/Application.cpp ../include/Core/Application.h
             Core/Input.cpp ../include/Core/Input.h
             Core/GLCallbacks.cpp ../include/Core/GLCallbacks.h
+            Core/Delegate.cpp ../include/Core/Delegate.h  ../include/Core/Defines.h  ../include/Core/CoreMinimal.h
+            Core/Log.cpp ../include/Core/Log.h Core/ImGuiWrapper.cpp ../include/Core/ImGuiWrapper.h
+            ../include/Core/TKTypeTraits.h
             Rendering/Window.cpp ../include/Rendering/Window.h 
             Rendering/Utils.cpp ../include/Rendering/Utils.h
             Rendering/Shader.cpp ../include/Rendering/Shader.h
             Rendering/Material.cpp ../include/Rendering/Material.h
             Rendering/Mesh.cpp ../include/Rendering/Mesh.h
-            Core/Delegate.cpp ../include/Core/Delegate.h  ../include/Core/Defines.h  ../include/Core/CoreMinimal.h
-            Core/Log.cpp ../include/Core/Log.h 
-            ../include/Core/TKTypeTraits.h)
+            )
 
 #include our own headers
 target_include_directories(Toolkit PUBLIC    ${CMAKE_CURRENT_SOURCE_DIR}/../include 
@@ -38,7 +39,6 @@ add_library(imgui STATIC
             
 target_include_directories(imgui PRIVATE ${LIB_DIR}/imgui ${LIB_DIR}/imgui/backends ${LIB_DIR}/glfw/include)
 
-
 target_include_directories(Toolkit PUBLIC ${LIB_DIR}/imgui ${LIB_DIR}/imgui/backends)
 target_link_libraries(Toolkit PUBLIC imgui)
 
@@ -46,8 +46,8 @@ set_target_properties(Toolkit PROPERTIES FOLDER "Toolkit")
 target_compile_features(Toolkit PRIVATE cxx_std_17)
 
 #include GLFW headers for input handling
-target_include_directories(Toolkit PRIVATE ${LIB_DIR}/glfw/include)
-target_link_libraries(Toolkit PRIVATE glfw)
+target_include_directories(Toolkit PUBLIC ${LIB_DIR}/glfw/include)
+target_link_libraries(Toolkit PUBLIC glfw)
 
 #add the glfw project subdirectory as a private dependency
 add_subdirectory( ${LIB_DIR}/glfw ${CMAKE_CURRENT_BINARY_DIR}/glfw )

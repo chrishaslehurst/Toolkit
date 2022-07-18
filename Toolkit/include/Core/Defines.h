@@ -16,3 +16,4 @@ using f64 = double;
 
 #define BIT(x) (1 << x)
 
+static const char* glsl_version = "#version 150";

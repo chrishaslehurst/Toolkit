@@ -41,12 +41,11 @@ namespace toolkit
 
 		void ReceiveInput(GLFWwindow* window, s32 key, s32 action, s32 mods);
 
-		void VoidTestCallback();
-		void TestCallback(s32 test, s32 test2);
+		
 
 	private:
 		std::vector<KeyBind> keyBinds;
 	};
 
-	void FreeFuncCallbackTest(s32 test1, s32 test2);
+	
 }

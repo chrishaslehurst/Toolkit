@@ -1,7 +1,7 @@
 #include "GLCallbacks.h"
 #include "Log.h"
 #include "GLFW/glfw3.h"
-#include "System.h"
+#include "Application.h"
 
 namespace toolkit
 {
@@ -13,7 +13,7 @@ namespace toolkit
 
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		System* system = static_cast<toolkit::System*>(glfwGetWindowUserPointer(window));
+		Application* system = static_cast<toolkit::Application*>(glfwGetWindowUserPointer(window));
 		if (system)
 		{
 			system->ReceiveInput(window, key, scancode, action, mods);
