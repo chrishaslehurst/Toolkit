@@ -43,7 +43,7 @@ target_include_directories(Toolkit PUBLIC ${LIB_DIR}/imgui ${LIB_DIR}/imgui/back
 target_link_libraries(Toolkit PUBLIC imgui)
 
 set_target_properties(Toolkit PROPERTIES FOLDER "Toolkit")
-target_compile_features(Toolkit PRIVATE cxx_std_17)
+target_compile_features(Toolkit PRIVATE cxx_std_20)
 
 #include GLFW headers for input handling
 target_include_directories(Toolkit PUBLIC ${LIB_DIR}/glfw/include)

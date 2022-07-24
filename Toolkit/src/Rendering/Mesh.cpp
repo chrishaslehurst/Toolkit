@@ -30,6 +30,13 @@ namespace toolkit
             1, 2, 3  // second triangle
         };
 
+        float texCoords[] = {
+            1.0f, 1.0f, // top right corner
+            1.0f, 0.0f, // lower-right corner
+            0.0f, 0.f,  // bottom left corner
+            0.f,  1.f    //top left
+        };
+
         GLuint vertexBufferObject;
 
         glGenBuffers(1, &vertexBufferObject);

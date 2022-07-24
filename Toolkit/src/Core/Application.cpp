@@ -31,6 +31,10 @@ namespace toolkit
 
     bool Application::Update()
     {
+        double thisFrameTime = glfwGetTime();
+        double deltaSeconds = (thisFrameTime - lastFrameTime);
+        lastFrameTime = thisFrameTime;
+
         if (nullptr != window)
         {
             window->PreRenderUpdate();
@@ -41,7 +45,7 @@ namespace toolkit
             imgui->StartFrame();
         }
             
-        OnUpdate();
+        OnUpdate(deltaSeconds);
             
         if (nullptr != imgui)
         {

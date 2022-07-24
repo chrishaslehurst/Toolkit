@@ -10,9 +10,9 @@ class SandboxApp : public toolkit::Application
 {
 public:
 	
-	void VoidTestCallback()
+	void ToggleMenu()
 	{
-		TK_CORE_INFO("Void Test");
+		showMenu = !showMenu;
 	}
 
 	void TestCallback(s32 test, s32 test2)
@@ -23,7 +23,7 @@ public:
 protected:
 	void OnStartup() override
 	{
-		AddScene(800, 600, "Sandbox");
+		AddScene(1200, 900, "Sandbox");
 
 		square.Setup();
 
@@ -32,15 +32,18 @@ protected:
 		def.fragmentShaderPath = "content/shaders/fragment.glsl";
 		mat.Compile(def);
 		
-		GetInput()->BindKey<&SandboxApp::VoidTestCallback>(GLFW_KEY_T, GLFW_PRESS, GLFW_MOD_SHIFT, this);
+		GetInput()->BindKey<&SandboxApp::ToggleMenu>(GLFW_KEY_D, GLFW_PRESS, GLFW_MOD_CONTROL, this);
 		GetInput()->BindKey<&UpPressed>(GLFW_KEY_UP, GLFW_PRESS, 0);
 	}
-	void OnUpdate() override
+	void OnUpdate(float deltaSeconds) override
 	{
 		mat.Use();
 		square.Draw();
 
-		ImGui::ShowDemoWindow(&showDemoWindow);
+		if (showMenu)
+		{
+			DrawMenu(deltaSeconds);
+		}
 	}
 	void OnShutdown() override
 	{
@@ -48,10 +51,18 @@ protected:
 	}
 private:
 
+	void DrawMenu(float deltaSeconds)
+	{
+		// Create a window called "My First Tool", with a menu bar.
+		ImGui::Begin("Sandbox Menu", &showMenu, ImGuiWindowFlags_AlwaysAutoResize);
+		ImGui::Text("Frame Time : %.2f (ms)", deltaSeconds * 1000);
+		ImGui::End();
+	}
+
 	toolkit::Mesh square;
 	toolkit::Material mat;
 
-	bool showDemoWindow = true;
+	bool showMenu = false;
 };
 
 int main() {

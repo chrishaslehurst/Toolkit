@@ -21,7 +21,7 @@ namespace toolkit {
 		Input* GetInput() { return input.get(); }
 	protected:
 		virtual void OnStartup() = 0;
-		virtual void OnUpdate() = 0;
+		virtual void OnUpdate(float deltaSeconds) = 0;
 		virtual void OnShutdown() = 0;
 
 		void AddScene(u32 width, u32 height, const char* windowName);
@@ -30,5 +30,7 @@ namespace toolkit {
 		std::unique_ptr<Window> window = nullptr;
 		std::unique_ptr<Input> input = nullptr;
 		std::unique_ptr<ImGuiWrapper> imgui = nullptr;
+
+		double lastFrameTime = 0;
 	};
 }

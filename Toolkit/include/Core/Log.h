@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string_view>
 #include "spdlog/spdlog.h"
 
 class spdlog::logger;
@@ -18,7 +19,7 @@ namespace toolkit
 
 		static std::shared_ptr<spdlog::logger> coreLogger;
 		static std::shared_ptr<spdlog::logger> appLogger;
-
+		
 	};
 }
 
