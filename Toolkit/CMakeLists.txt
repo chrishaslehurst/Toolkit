@@ -1,26 +1,23 @@
 cmake_minimum_required(VERSION 3.2)
 
-add_library(Toolkit STATIC
-            Core/Application.cpp ../include/Core/Application.h
-            Core/Input.cpp ../include/Core/Input.h
-            Core/GLCallbacks.cpp ../include/Core/GLCallbacks.h
-            Core/Delegate.cpp ../include/Core/Delegate.h  ../include/Core/Defines.h  ../include/Core/CoreMinimal.h
-            Core/Log.cpp ../include/Core/Log.h Core/ImGuiWrapper.cpp ../include/Core/ImGuiWrapper.h
-            ../include/Core/TKTypeTraits.h
-            Rendering/Window.cpp ../include/Rendering/Window.h 
-            Rendering/Utils.cpp ../include/Rendering/Utils.h
-            Rendering/Shader.cpp ../include/Rendering/Shader.h
-            Rendering/Material.cpp ../include/Rendering/Material.h
-            Rendering/Mesh.cpp ../include/Rendering/Mesh.h
-            )
+file(GLOB_RECURSE _source_list 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h*" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp*" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/*.cpp"
+    )
+
+add_library(Toolkit ${_source_list})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/ FILES ${_source_list})
 
 #include our own headers
-target_include_directories(Toolkit PUBLIC    ${CMAKE_CURRENT_SOURCE_DIR}/../include 
-                                            ${CMAKE_CURRENT_SOURCE_DIR}/../include/Core 
-                                            ${CMAKE_CURRENT_SOURCE_DIR}/../include/Rendering)
+target_include_directories(Toolkit PUBLIC   ${CMAKE_CURRENT_SOURCE_DIR}/include 
+                                            ${CMAKE_CURRENT_SOURCE_DIR}/include/Core 
+                                            ${CMAKE_CURRENT_SOURCE_DIR}/include/Math 
+                                            ${CMAKE_CURRENT_SOURCE_DIR}/include/Rendering)
 
-set(MODULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../)
-set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../ThirdParty)
+set(MODULES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../)
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ThirdParty)
 
 add_library(imgui STATIC
             ${LIB_DIR}/imgui/imgui.cpp
@@ -68,10 +65,13 @@ target_link_libraries(Toolkit PUBLIC spdlog)
 
 set_target_properties(spdlog PROPERTIES FOLDER "Third Party")
 
+#include stb_image
+target_include_directories(Toolkit PRIVATE ${LIB_DIR}/stb)
+
 #copy assets
 add_custom_target(copy_assets ALL
                 COMMAND ${CMAKE_COMMAND} -E copy_directory
-                ${CMAKE_CURRENT_SOURCE_DIR}/../content
+                ${CMAKE_CURRENT_SOURCE_DIR}/content
                 ${PROJECT_BINARY_DIR}/content
                 COMMENT "Copying resources into binary directory")
 
@@ -82,7 +82,13 @@ set_target_properties(copy_assets PROPERTIES FOLDER "Build Utilites")
 #testing
 enable_testing()
 
-add_executable(ToolkitTests tests/DelegateTests.cpp)
+file(GLOB_RECURSE _test_list 
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.h*" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/tests/*.cpp*" 
+    )
+
+add_executable(ToolkitTests ${_test_list})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/ FILES ${_source_list})
 target_link_libraries(ToolkitTests PRIVATE Toolkit)
 add_subdirectory(${LIB_DIR}/Catch2 ${CMAKE_CURRENT_BINARY_DIR}/Catch2)
 target_link_libraries(ToolkitTests PRIVATE Catch2::Catch2WithMain)

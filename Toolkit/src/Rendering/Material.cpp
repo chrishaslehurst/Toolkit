@@ -29,11 +29,14 @@ namespace toolkit
             TK_CORE_ERROR("Shader program link failed:\n {}", infoLog);
             shaderProgramIndex = -1;
         }
+
+        tex.Generate(definition.texturePath.c_str());
     }
 
     void Material::Use() 
     { 
         glUseProgram(shaderProgramIndex);
+        glBindTexture(GL_TEXTURE_2D, tex.GetIndex());
     }
 
 } // namespace toolkit

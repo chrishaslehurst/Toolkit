@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "Texture.h"
 
 namespace toolkit
 {
@@ -7,6 +8,7 @@ namespace toolkit
 	{
 		std::string vertexShaderPath;
 		std::string fragmentShaderPath;
+		std::string texturePath;
 	};
 
 	class Material
@@ -16,5 +18,6 @@ namespace toolkit
 		void Use();
 	private:
 		u32 shaderProgramIndex = 0;
+		Texture tex;
 	};
 }

@@ -52,7 +52,7 @@ namespace toolkit
             imgui->EndFrame();
         }
         
-        if (nullptr != window && window->Update())
+        if (nullptr == window || window->Update())
         {
             return true;
         }

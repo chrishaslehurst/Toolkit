@@ -30,6 +30,7 @@ protected:
 		toolkit::MaterialDef def;
 		def.vertexShaderPath = "content/shaders/vertex.glsl";
 		def.fragmentShaderPath = "content/shaders/fragment.glsl";
+		def.texturePath = "content/textures/scout.jpg";
 		mat.Compile(def);
 		
 		GetInput()->BindKey<&SandboxApp::ToggleMenu>(GLFW_KEY_D, GLFW_PRESS, GLFW_MOD_CONTROL, this);

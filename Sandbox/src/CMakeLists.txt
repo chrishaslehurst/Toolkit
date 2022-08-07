@@ -8,7 +8,7 @@ add_executable(Sandbox
 )
 
 #include the toolkit
-add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/../../Toolkit/src ${CMAKE_CURRENT_BINARY_DIR}/Toolkit)
+add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/../../Toolkit ${CMAKE_CURRENT_BINARY_DIR}/Toolkit)
 target_link_libraries(Sandbox PRIVATE Toolkit)
 target_compile_features(Sandbox PRIVATE cxx_std_20)
 

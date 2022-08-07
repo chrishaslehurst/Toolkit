@@ -20,21 +20,14 @@ namespace toolkit
     void Mesh::Setup() 
     {
         float vertices[] = {
-            0.5f,  0.5f,  0.0f, 1.f, 0.f, 0.f, // top right
-            0.5f,  -0.5f, 0.0f, 0.f, 1.f, 0.f, // bottom right
-            -0.5f, -0.5f, 0.0f, 0.f, 0.f, 1.f, // bottom left
-            -0.5f, 0.5f,  0.0f, 1.f, 1.f, 1.f  // top left
+            0.5f,  0.5f,  0.0f, 1.f, 0.f, 0.f, 1.f, 1.f, // top right
+            0.5f,  -0.5f, 0.0f, 0.f, 1.f, 0.f, 1.f, 0.f, // bottom right
+            -0.5f, -0.5f, 0.0f, 0.f, 0.f, 1.f, 0.f, 0.f,// bottom left
+            -0.5f, 0.5f,  0.0f, 1.f, 1.f, 1.f, 0.f, 1.f// top left
         };
         unsigned int indices[] = {
             0, 1, 3, // first triangle
             1, 2, 3  // second triangle
-        };
-
-        float texCoords[] = {
-            1.0f, 1.0f, // top right corner
-            1.0f, 0.0f, // lower-right corner
-            0.0f, 0.f,  // bottom left corner
-            0.f,  1.f    //top left
         };
 
         GLuint vertexBufferObject;
@@ -53,11 +46,15 @@ namespace toolkit
 
         // Vertex Attributes
         // position
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), nullptr);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
         // color attribute
-        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void *)(3 * sizeof(float)));
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));
         glEnableVertexAttribArray(1);
+        // texture attribute
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));
+        glEnableVertexAttribArray(2);  
+
 
         glBindVertexArray(0);
     }

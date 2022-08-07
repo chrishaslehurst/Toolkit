@@ -19,6 +19,5 @@ namespace toolkit {
 		u32 getIndex() const { return shaderIndex; };
 	private:
 		u32 shaderIndex = 0;
-
 	};
 }
