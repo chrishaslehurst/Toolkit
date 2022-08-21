@@ -6,65 +6,53 @@ namespace toolkit
 {
 	namespace math
 	{
-		struct Vector2
-		{
-			f32 X = 0.f;
-			f32 Y = 0.f;
-		};
+		template <int> struct Members { };
+		template <> struct Members<2> { f32 x = 0.f; f32 y = 0.f; };
+		template <> struct Members<3> { f32 x = 0.f; f32 y = 0.f; f32 z = 0.f; };
 
-		struct Vector3
+		template<int T>
+		struct Vector : Members<T>
 		{
-			f32 X = 0.f;
-			f32 Y = 0.f;
-			f32 Z = 0.f;
+			static_assert(T == 3 || T == 2, "Only supports 2 or 3 elements");
 		};
 
 		template<int T>
-		struct Vector
+		constexpr Vector<T> operator+(const Vector<T>& lhs, const Vector<T>& rhs)
 		{
-			f32 elements[T];
-
-			template<int Index>
-			f32 At()
+			Vector<T> res;
+			res.x = lhs.x + rhs.x;
+			res.y = lhs.y + rhs.y;
+			if constexpr (T > 2)
 			{
-				static_assert(Index < T, "Out of bounds! This vector does not contain that many elements");
-				return elements[Index];
-			}			
-		};
-
-
-		constexpr Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
-		{
-			Vector2 res;
-			res.X = lhs.X + rhs.X;
-			res.Y = lhs.Y + rhs.Y;
+				res.z = lhs.z + rhs.z;
+			}
 			return res;
 		}
 
-		constexpr Vector3 operator+(const Vector3& lhs, const Vector3& rhs)
+		template<int T>
+		constexpr Vector<T> operator-(const Vector<T>& lhs, const Vector<T>& rhs)
 		{
-			Vector3 res;
-			res.X = lhs.X + rhs.X;
-			res.Y = lhs.Y + rhs.Y;
-			res.Z = lhs.Z + rhs.Z;
+			Vector<T> res;
+			res.x = lhs.x - rhs.x;
+			res.y = lhs.y - rhs.y;
+			if constexpr (T > 2)
+			{
+				res.z = lhs.z - rhs.z;
+			}
 			return res;
 		}
 
-		constexpr Vector2 operator-(const Vector2& lhs, const Vector2& rhs)
+		template<int T>
+		constexpr float DotProduct(const Vector<T>& lhs, const Vector<T>& rhs)
 		{
-			Vector2 res;
-			res.X = lhs.X - rhs.X;
-			res.Y = lhs.Y - rhs.Y;
-			return res;
-		}
-
-		constexpr Vector3 operator-(const Vector3& lhs, const Vector3& rhs)
-		{
-			Vector3 res;
-			res.X = lhs.X - rhs.X;
-			res.Y = lhs.Y - rhs.Y;
-			res.Z = lhs.Z - rhs.Z;
-			return res;
+			if constexpr (T == 2)
+			{
+				return (lhs.x * rhs.x) + (lhs.y * rhs.y);
+			}
+			else if constexpr (T == 3)
+			{
+				return (lhs.x * rhs.x) + (lhs.y * rhs.y) + (lhs.z * rhs.z);
+			}
 		}
 	}
 }
