@@ -6,10 +6,10 @@
 
 TEST_CASE("Vector addition works", "[math]") 
 {
-	toolkit::math::Vector<2> vec2_1;
-	toolkit::math::Vector<2> vec2_2;
-	toolkit::math::Vector<3> vec3_1;
-	toolkit::math::Vector<3> vec3_2;
+	toolkit::math::Vector2 vec2_1;
+	toolkit::math::Vector2 vec2_2;
+	toolkit::math::Vector3 vec3_1;
+	toolkit::math::Vector3 vec3_2;
 
 	vec3_1.x = 5.f;
 	vec3_1.y = 0.f;

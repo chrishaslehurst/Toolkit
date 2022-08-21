@@ -16,6 +16,9 @@ namespace toolkit
 			static_assert(T == 3 || T == 2, "Only supports 2 or 3 elements");
 		};
 
+		using Vector2 = Vector<2>;
+		using Vector3 = Vector<3>;
+
 		template<int T>
 		constexpr Vector<T> operator+(const Vector<T>& lhs, const Vector<T>& rhs)
 		{
