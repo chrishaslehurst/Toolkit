@@ -19,6 +19,20 @@ namespace toolkit
 			f32 Z = 0.f;
 		};
 
+		template<int T>
+		struct Vector
+		{
+			f32 elements[T];
+
+			template<int Index>
+			f32 At()
+			{
+				static_assert(Index < T, "Out of bounds! This vector does not contain that many elements");
+				return elements[Index];
+			}			
+		};
+
+
 		constexpr Vector2 operator+(const Vector2& lhs, const Vector2& rhs)
 		{
 			Vector2 res;

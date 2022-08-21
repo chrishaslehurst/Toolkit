@@ -88,6 +88,7 @@ file(GLOB_RECURSE _test_list
     )
 
 add_executable(ToolkitTests ${_test_list})
+target_compile_features(ToolkitTests PRIVATE cxx_std_20)
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/ FILES ${_source_list})
 target_link_libraries(ToolkitTests PRIVATE Toolkit)
 add_subdirectory(${LIB_DIR}/Catch2 ${CMAKE_CURRENT_BINARY_DIR}/Catch2)
