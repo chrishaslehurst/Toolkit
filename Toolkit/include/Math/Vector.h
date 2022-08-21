@@ -6,12 +6,15 @@ namespace toolkit
 {
 	namespace math
 	{
-		template <int> struct Members { };
-		template <> struct Members<2> { f32 x = 0.f; f32 y = 0.f; };
-		template <> struct Members<3> { f32 x = 0.f; f32 y = 0.f; f32 z = 0.f; };
+		namespace vec 
+		{
+			template <int> struct Members { };
+			template <> struct Members<2> { f32 x = 0.f; f32 y = 0.f; };
+			template <> struct Members<3> { f32 x = 0.f; f32 y = 0.f; f32 z = 0.f; };
+		}
 
 		template<int T>
-		struct Vector : Members<T>
+		struct Vector : vec::Members<T>
 		{
 			static_assert(T == 3 || T == 2, "Only supports 2 or 3 elements");
 		};
