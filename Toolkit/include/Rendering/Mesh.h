@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 
-namespace toolkit {
+namespace tk {
 
 	class Material;
 

@@ -1,7 +1,7 @@
 #include "Input.h"
 #include <GLFW/glfw3.h>
 
-namespace toolkit
+namespace tk
 {
 	void Input::ReceiveInput(GLFWwindow* window, s32 key, s32 action, s32 mods)
 	{

@@ -3,7 +3,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
-namespace toolkit
+namespace tk
 {
     void Material::Compile(const MaterialDef &definition) 
     {

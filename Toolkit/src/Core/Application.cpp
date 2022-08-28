@@ -1,6 +1,6 @@
 #include "Application.h"
 
-namespace toolkit
+namespace tk
 {
     
 

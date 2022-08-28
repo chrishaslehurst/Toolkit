@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <string>
 
-namespace toolkit
+namespace tk
 {
 	namespace utilities {
 

@@ -5,7 +5,7 @@
 
 struct GLFWwindow;
 
-namespace toolkit
+namespace tk
 {
 	struct KeyBind
 	{

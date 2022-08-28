@@ -4,7 +4,7 @@
 
 struct GLFWwindow;
 
-namespace toolkit
+namespace tk
 {
 	void errorCallback(s32 error, const char* description);
 

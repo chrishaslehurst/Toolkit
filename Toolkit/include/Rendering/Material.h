@@ -2,7 +2,7 @@
 #include "CoreMinimal.h"
 #include "Texture.h"
 
-namespace toolkit
+namespace tk
 {
 	struct MaterialDef
 	{

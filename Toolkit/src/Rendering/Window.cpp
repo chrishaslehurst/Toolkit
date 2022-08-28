@@ -4,7 +4,7 @@
 
 #include "GLFW/glfw3.h"
 
-namespace toolkit
+namespace tk
 {
     Window::Window(u32 width, u32 height, const char *windowName, void *system)
     {
@@ -14,7 +14,7 @@ namespace toolkit
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        glfwSetErrorCallback(toolkit::errorCallback);
+        glfwSetErrorCallback(tk::errorCallback);
 
         window = glfwCreateWindow(width, height, windowName, nullptr, nullptr);
         if (!window)
@@ -35,8 +35,8 @@ namespace toolkit
         glViewport(0, 0, width, height);
         glClearColor(0.15f, 0.6f, 0.4f, 1.0f);
         glfwSetWindowUserPointer(window, system);
-        glfwSetKeyCallback(window, toolkit::keyCallback);
-        glfwSetFramebufferSizeCallback(window, toolkit::FrameBufferSizeCallback);
+        glfwSetKeyCallback(window, tk::keyCallback);
+        glfwSetFramebufferSizeCallback(window, tk::FrameBufferSizeCallback);
 
         
     }

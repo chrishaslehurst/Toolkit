@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 
-namespace toolkit {
+namespace tk {
 	enum class ShaderType
 	{
 		Vertex,

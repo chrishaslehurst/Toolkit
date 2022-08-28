@@ -3,7 +3,7 @@
 #include "GLFW/glfw3.h"
 #include "Application.h"
 
-namespace toolkit
+namespace tk
 {
 
 	void errorCallback(s32 error, const char* description)
@@ -13,7 +13,7 @@ namespace toolkit
 
 	void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		Application* system = static_cast<toolkit::Application*>(glfwGetWindowUserPointer(window));
+		Application* system = static_cast<tk::Application*>(glfwGetWindowUserPointer(window));
 		if (system)
 		{
 			system->ReceiveInput(window, key, scancode, action, mods);

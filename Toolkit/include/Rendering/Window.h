@@ -3,7 +3,7 @@
 
 struct GLFWwindow;
 
-namespace toolkit {
+namespace tk {
 
 	class Window 
 	{

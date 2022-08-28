@@ -3,7 +3,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
-namespace toolkit
+namespace tk
 {
     Shader::Shader(const char* filepath, ShaderType type)
     {

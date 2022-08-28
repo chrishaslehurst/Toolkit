@@ -6,7 +6,7 @@
 
 class spdlog::logger;
 
-namespace toolkit
+namespace tk
 {
 	class Log
 	{
@@ -23,14 +23,14 @@ namespace toolkit
 	};
 }
 
-#define TK_CORE_FATAL(...)	toolkit::Log::GetCoreLogger()->fatal(__VA_ARGS__)
-#define TK_CORE_ERROR(...)	toolkit::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define TK_CORE_WARN(...)	toolkit::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define TK_CORE_INFO(...)	toolkit::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define TK_CORE_TRACE(...)	toolkit::Log::GetCoreLogger()->trace(__VA_ARGS__)
+#define TK_CORE_FATAL(...)	tk::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+#define TK_CORE_ERROR(...)	tk::Log::GetCoreLogger()->error(__VA_ARGS__)
+#define TK_CORE_WARN(...)	tk::Log::GetCoreLogger()->warn(__VA_ARGS__)
+#define TK_CORE_INFO(...)	tk::Log::GetCoreLogger()->info(__VA_ARGS__)
+#define TK_CORE_TRACE(...)	tk::Log::GetCoreLogger()->trace(__VA_ARGS__)
 
-#define TK_FATAL(...)	toolkit::Log::GetAppLogger()->fatal(__VA_ARGS__)
-#define TK_ERROR(...)	toolkit::Log::GetAppLogger()->error(__VA_ARGS__)
-#define TK_WARN(...)	toolkit::Log::GetAppLogger()->warn(__VA_ARGS__)
-#define TK_INFO(...)	toolkit::Log::GetAppLogger()->info(__VA_ARGS__)
-#define TK_TRACE(...)	toolkit::Log::GetAppLogger()->trace(__VA_ARGS__)
+#define TK_FATAL(...)	tk::Log::GetAppLogger()->fatal(__VA_ARGS__)
+#define TK_ERROR(...)	tk::Log::GetAppLogger()->error(__VA_ARGS__)
+#define TK_WARN(...)	tk::Log::GetAppLogger()->warn(__VA_ARGS__)
+#define TK_INFO(...)	tk::Log::GetAppLogger()->info(__VA_ARGS__)
+#define TK_TRACE(...)	tk::Log::GetAppLogger()->trace(__VA_ARGS__)
