@@ -6,7 +6,7 @@
 
 void UpPressed() { TK_CORE_INFO("Up Pressed"); }
 
-class SandboxApp : public toolkit::Application
+class SandboxApp : public tk::Application
 {
 public:
 	
@@ -27,7 +27,7 @@ protected:
 
 		square.Setup();
 
-		toolkit::MaterialDef def;
+		tk::MaterialDef def;
 		def.vertexShaderPath = "content/shaders/vertex.glsl";
 		def.fragmentShaderPath = "content/shaders/fragment.glsl";
 		def.texturePath = "content/textures/scout.jpg";
@@ -60,8 +60,8 @@ private:
 		ImGui::End();
 	}
 
-	toolkit::Mesh square;
-	toolkit::Material mat;
+	tk::Mesh square;
+	tk::Material mat;
 
 	bool showMenu = false;
 };
