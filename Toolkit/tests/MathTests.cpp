@@ -60,3 +60,22 @@ TEST_CASE("Distance and Length Works", "[math]")
 	REQUIRE(tk::vector::Dist(ones, origin) == sqrt(3.f));
 
 }
+
+TEST_CASE("Matrix Multiplication Works", "[math]")
+{
+	using Matrix4 = tk::Matrix<float, 4, 4>;
+	using Matrix3 = tk::Matrix<double, 3, 3>;
+	using Matrix2 = tk::Matrix<float, 2, 2>;
+
+	Matrix4 FourByFourM1 = Matrix4::Identity();
+	Matrix4 FourByFourM2 = Matrix4::Identity();
+
+	Matrix3 ThreeByThreeM1 = Matrix3::Identity();
+	Matrix3 ThreeByThreeM2 = Matrix3::Identity();
+
+	Matrix4 IdentityTimesIdentityFour = FourByFourM1 * FourByFourM2;
+	Matrix3 IdentityTimesIdentityThree = ThreeByThreeM1 * ThreeByThreeM2;
+
+	REQUIRE(IdentityTimesIdentityThree == Matrix3::Identity());
+	REQUIRE(IdentityTimesIdentityFour == Matrix4::Identity());
+}

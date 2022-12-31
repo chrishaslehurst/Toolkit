@@ -43,8 +43,8 @@ namespace tk
 
 	namespace vector
 	{
-		[[nodiscard]] constexpr float DotProduct(const Vector3& lhs, const Vector3& rhs);
-		[[nodiscard]] constexpr Vector3 CrossProduct(const Vector3& lhs, const Vector3& rhs);
+		[[nodiscard]] float DotProduct(const Vector3& lhs, const Vector3& rhs);
+		[[nodiscard]] Vector3 CrossProduct(const Vector3& lhs, const Vector3& rhs);
 		[[nodiscard]] constexpr float DistSquared(const Vector3& a, const Vector3& b);
 		[[nodiscard]] float Dist(const Vector3& a, const Vector3& b);
 		[[nodiscard]] constexpr float LengthSquared(const Vector3& vec);
