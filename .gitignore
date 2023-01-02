@@ -31,9 +31,8 @@
 *.out
 *.app
 
-Engine/build/*
-Render/build/*
 Sandbox/build/*
 Core/build/*
 .vscode/*
 /Toolkit/content/textures/scout.jpg
+/Sandbox/Testing/Temporary/*
