@@ -30,6 +30,11 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}\Sandbox\build --config ${{env.BUILD_TYPE}}
 
+    - name: DebugTests
+      working-directory: ${{github.workspace}}\Sandbox\build
+      # Print Contents of build dir
+      run: ls -R
+
     - name: Test
       working-directory: ${{github.workspace}}\Sandbox\build
       # Execute tests defined by the CMake configuration.  
