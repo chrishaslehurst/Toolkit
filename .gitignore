@@ -35,4 +35,4 @@ Sandbox/build/*
 Core/build/*
 .vscode/*
 /Toolkit/content/textures/scout.jpg
-/Sandbox/Testing/Temporary/*
+Sandbox/Testing/Temporary/*
