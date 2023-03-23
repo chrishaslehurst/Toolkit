@@ -1,5 +1,6 @@
 #pragma once
-#include "CoreMinimal.h"
+#include "Defines.h"
+#include <type_traits>
 
 namespace tk
 {
@@ -75,5 +76,10 @@ namespace tk
 		Type data[Rows][Cols];
 	};
 
+	using Matrix4 = Matrix<float, 4, 4>;
+	using Matrix3 = Matrix<float, 3, 3>;
+	using Matrix2 = Matrix<float, 2, 2>;
 	
+	
+
 }

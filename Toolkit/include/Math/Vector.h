@@ -1,6 +1,7 @@
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Defines.h"
+
 
 namespace tk
 {

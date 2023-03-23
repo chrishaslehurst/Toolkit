@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <math.h>
 
 namespace tk
 {
@@ -23,7 +24,7 @@ namespace tk
 
         float Dist(const Vector3 &a, const Vector3 &b)
         {
-            return sqrt(DistSquared(a, b));
+            return sqrtf(DistSquared(a, b));
         }
 
         constexpr float LengthSquared(const Vector3 &vec)

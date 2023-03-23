@@ -10,6 +10,6 @@ rmdir /Q/S "."
 
 ECHO Stale build files removed, generating new project files.
 
-cmake ../src
+cmake ../src -G "Visual Studio 17"
 
 PAUSE
